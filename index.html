@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heroes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="btn-open">
+      <button class="open-modal">Add Hero</button>
+      <form class="heroes__form" id="heroesForm" onsubmit="submitForm(event)">
+        <label for="name">Hero Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="comics">Comics:</label>
+        <select id="comics" name="comics" required>
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+        </select>
+        <div class="favourite">
+          <label for="favourite">Favourite:</label>
+          <input type="checkbox" id="favourite" name="favourite" />
+        </div>
+
+        <button type="submit">Add Hero</button>
+      </form>
+    </div>
+    <table class="heroes__table" id="heroesTable">
+      <thead>
+        <tr>
+          <th>Name Surname</th>
+          <th>Comics</th>
+          <th>Favourite</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody class="tbody"></tbody>
+    </table>
+    <div class="modal">
+      <div class="modal-content">
+        <p class="text-modal"></p>
+        <button class="close-modal">OK</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
