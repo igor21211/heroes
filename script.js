@@ -1,4 +1,5 @@
 const API = "https://657b56c8394ca9e4af14350a.mockapi.io/heroes";
+const API_COMICS = "https://657b56c8394ca9e4af14350a.mockapi.io/comics";
 const tbody = document.querySelector(".tbody");
 const btnSubmit = document.querySelector(".add-hero");
 const openModal = document.querySelector(".open-modal");
@@ -21,6 +22,26 @@ async function getHeroName(name) {
   } catch (e) {
     openErrorModal(error.message);
   }
+}
+async function getComics() {
+  try {
+    const response = await fetch(API_COMICS);
+    const data = await response.json();
+    renderSelect(data);
+  } catch (e) {
+    openErrorModal(e.message);
+  }
+}
+
+function renderSelect(data) {
+  const selectEl = document.getElementById("comics");
+  selectEl.innerHTML = data.map(renderOption).join();
+}
+
+function renderOption(data) {
+  return `
+  <option value="${data.name}">${data.name}</option>
+  `;
 }
 
 function renderTable(data) {
@@ -62,6 +83,7 @@ async function removeHero(id) {
 
 document.addEventListener("DOMContentLoaded", () => {
   getAllHeroes();
+  getComics();
 });
 
 async function submitForm(e) {
